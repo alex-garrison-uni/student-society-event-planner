@@ -1,0 +1,27 @@
+25
+20 500
+Orientation-Walk 1 10 30
+Ice-Breaker-Games 2 20 50
+Movie-Marathon 5 60 140
+City-Tour 4 80 120
+Charity-Run 3 15 70
+Trivia-Night 2 30 65
+Wine-Tasting 2 100 150
+Rock-Climbing 4 110 160
+Theatre-Trip 4 90 130
+Pottery-Class 3 85 125
+Campus-Scavenger-Hunt 3 25 75
+Photography-Walk 3 40 85
+Poetry-Slam 2 20 55
+Dance-Workshop 2 50 90
+Baking-Competition 3 55 95
+Outdoor-Cinema 4 70 115
+Kayaking 5 130 190
+Board-Game-Cafe 3 45 80
+Comedy-Show 3 80 135
+Volunteering-Event 4 10 60
+Yoga-Session 2 35 70
+Park-Picnic 3 30 65
+Museum-Evening 3 75 110
+Stargazing-Trip 4 50 100
+Crafts-Fair 2 40 75

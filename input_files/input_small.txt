@@ -1,0 +1,7 @@
+5
+10 200
+Campus-Tour 2 20 50
+Game-Night 3 80 120
+Museum-Trip 4 100 150
+Pizza-Workshop 2 60 100
+Hiking 5 30 140

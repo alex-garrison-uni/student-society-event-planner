@@ -1,0 +1,12 @@
+10
+12 250
+Welcome-Dinner 2 40 75
+Quiz-Night 2 30 60
+Movie-Night 3 35 80
+Sports-Day 4 50 100
+Art-Class 2 60 90
+Karaoke 2 45 85
+Bowling 3 70 105
+Cooking-Workshop 3 80 120
+Beach-Outing 5 90 140
+Concert-Trip 4 110 160

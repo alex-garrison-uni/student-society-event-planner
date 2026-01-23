@@ -1,0 +1,14 @@
+12
+15 300
+Welcome-BBQ 3 50 80
+Karaoke-Night 2 40 70
+Film-Screening 3 30 90
+Sports-Tournament 4 60 110
+Art-Workshop 2 70 95
+Pub-Quiz 2 25 60
+Bowling 3 80 100
+Laser-Tag 2 90 130
+Cooking-Class 3 75 105
+Beach-Trip 6 120 180
+Escape-Room 2 85 115
+Open-Mic 2 20 50

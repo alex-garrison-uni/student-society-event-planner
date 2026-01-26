@@ -4,7 +4,7 @@ import time
 
 class Activity:
     """Class for activities."""
-    def __init__(self, name, time, cost, enjoyment):
+    def __init__(self, name: str, time: int, cost: int, enjoyment: int):
         self.name = name
         self.time = time
         self.cost = cost
@@ -16,7 +16,7 @@ class Activity:
 
 class Event:
     """Class for events."""
-    def __init__(self, max_time, max_budget, activities):
+    def __init__(self, max_time: int, max_budget: int, activities: list[Activity]):
         self.max_time = max_time
         self.max_budget = max_budget
         self.activities = activities
@@ -27,7 +27,7 @@ def parse_args():
     arg_parser.add_argument("input_file")
     return arg_parser.parse_args()
 
-def load_event_file(file_name):
+def load_event_file(file_name: str) -> Event:
     """Loads an event from a given file."""
     path = os.path.join("input_files", file_name)
 
@@ -49,12 +49,12 @@ def load_event_file(file_name):
         # Return an Event object
         return Event(max_time, max_budget, activities)
 
-def bruteforce(event):
+def bruteforce(event: Event):
     """Return the optimal activity choices using a brute-force approach."""
     activities_count = len(event.activities)
 
     # Recursive sub-function
-    def recursive_bruteforce(i, time_used, enjoyment, chosen_activities):
+    def recursive_bruteforce(i, time_used: int, enjoyment: int, chosen_activities: list[Activity]) -> tuple[list[Activity], int, int]:
         # Base case for when all activities are evaluated
         if i == activities_count:
             return chosen_activities, enjoyment, time_used

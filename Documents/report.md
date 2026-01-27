@@ -24,10 +24,12 @@ Data structures:
 - Dynamic arrays for chosen activities and possible event activities (Python `list`)
 - Tuple for the function return values (Python `tuple`)
 
+Due to the inefficiency of the brute-force approach and it's exponential time complexity, it will not generate optimal solutions for larger amounts of activites (>25) in suitable time. Therefore, a hard time limit is added to ensure that it will not exceed a certain runtime.
+
 #### Pseudo-code
 ```
 FUNCTION recursive_bruteforce(i, time_used, enjoyment, chosen_activities)
-    IF i = number of activities THEN
+    IF i = number of activities OR elapsed_time >= time_limit THEN
         RETURN (chosen_activities, enjoyment, time_used)
     ENDIF
 
@@ -44,7 +46,7 @@ FUNCTION recursive_bruteforce(i, time_used, enjoyment, chosen_activities)
             chosen_activities + [activity]
         )
 
-        IF take.enjoyment > best.enjoyment
+        IF take.enjoyment > best.enjoyment THEN
             best <- take
         ENDIF
     ENDIF
@@ -65,4 +67,8 @@ The algorithm's space complexity is linear as only one array is stored at a time
 
 ## Testing and Results
 
-...
+Pytest is used for testing.
+
+### Test coverage
+
+- utils.load_event_file: Tests cover that it can load all the input files successfully, and that it will raise the correct error for invalid input files.

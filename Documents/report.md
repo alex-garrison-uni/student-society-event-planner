@@ -39,12 +39,16 @@ FUNCTION recursive_bruteforce(i, time_used, enjoyment, chosen_activities)
     new_time_used <- time_used + activity.time
 
     IF new_time_used <= event.max_time THEN
+        chosen_activities.append(activity)
+
         take <- recursive_bruteforce(
             i + 1, 
             time_used + activity.time, 
             enjoyment + activity.enjoyment, 
-            chosen_activities + [activity]
+            chosen_activities
         )
+
+        chosen_activities.pop()
 
         IF take.enjoyment > best.enjoyment THEN
             best <- take
@@ -63,7 +67,7 @@ $\left| \wp(\text{activities}) \right| = 2^n$, where $n$ is the number of elemen
 
 As the algorithm does not include activities which exceed the constraint, the search space will typically be much lower than $2^n$.
 
-The algorithm's space complexity is linear as only one array is stored at a time, due to the DFS approach and that if an activity is taken, the space cost is only $O(n)$ due to one dynamic array creation operation. All subsets are not stored concurrently. 
+The algorithm's space complexity is linear as only one array is stored at a time and modified in-place, due to the append/pop DFS approach and that the maximum recursion depth is $n$. All subsets are not stored concurrently. 
 
 ## Testing and Results
 

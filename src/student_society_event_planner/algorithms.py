@@ -53,3 +53,43 @@ def bruteforce(event: Event, time_limit: float) -> tuple[list[Activity], int, in
 
     # Call the recursive sub-function
     return recursive_bruteforce(0, 0, 0, [])
+
+def bottom_up(event: Event, time_limit: float) -> tuple[list[Activity], int, int]:
+    activities_count = len(event.activities)
+    max_time = event.max_time
+
+    #Create a DP table for the bottom-up approach
+    dp = [[0 for _ in range(max_time + 1)] for _ in range(activities_count + 1)]
+
+    #Fill the DP table
+    for i in range(1, activities_count + 1):
+        activity = event.activities[i - 1]
+        for j in range(max_time + 1):
+            dp[i][j] = dp[i - 1][j]
+
+            if activity.time <= j:
+                enjoyment_count = dp[i - 1][j - activity.time] + activity.enjoyment
+                dp[i][j] = max(dp[i][j], enjoyment_count)
+
+    max_enjoyment = 0
+    time_used = 0
+    for i in range(max_time + 1):
+        if dp[activities_count][i] > max_enjoyment:
+            max_enjoyment = dp[activities_count][i]
+            time_used = i
+
+    #backtracking the activities chosen
+    chosen_activites = []
+    i = activities_count
+    t = time_used
+
+    while i > 0 and max_enjoyment > 0:
+        #if the value is different from the previous row, we don't take it
+        if dp[i][t] != dp[i - 1][t]:
+            choose = event.activities[i - 1]
+            chosen_activites.append(choose)
+            max_enjoyment -= activity.enjoyment
+            t -= activity.time
+        i -= 1
+
+    return chosen_activites, dp[activities_count][time_used], time_used

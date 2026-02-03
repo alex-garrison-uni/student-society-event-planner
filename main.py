@@ -1,5 +1,5 @@
 from student_society_event_planner.utils import parse_args, load_event_file
-from student_society_event_planner.algorithms import bruteforce
+from student_society_event_planner.algorithms import bruteforce, bottom_up
 
 import time
 
@@ -38,6 +38,21 @@ def main() -> None:
         f"\n\nTotal Enjoyment: {optimal_choices[1]}\n"
         f"Total Time Used: {optimal_choices[2]} hours\n\n"
         f"Execution Time: {bruteforce_time:.5f} seconds"
+    )
+
+    start = time.perf_counter()
+    optimal_choices = bottom_up(event, 600)
+    end = time.perf_counter()
+
+    bottom_up_time = end - start
+
+    print(
+        "\n--- BOTTOM UP ALGORITHM ---\n"
+        "Selected Activities:\n"
+        + '\n'.join([f"- {str(activity)}" for activity in optimal_choices[0]]) +
+        f"\n\nTotal Enjoyment: {optimal_choices[1]}\n"
+        f"Total Time Used: {optimal_choices[2]} hours\n\n"
+        f"Execution Time: {bottom_up_time:.5f} seconds"
     )
 
 if __name__ == "__main__":

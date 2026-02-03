@@ -3,9 +3,12 @@ from student_society_event_planner.algorithms import bruteforce
 
 import time
 
-def main():
+def main() -> None:
+    """Program entrypoint."""
+    # Parse command line arguments
     args = parse_args()
 
+    # Try to load the passed file
     try:
         event = load_event_file(args.input_file)
     except ValueError as e:

@@ -25,7 +25,7 @@ def load_event_file(file_name: str) -> Event:
         except ValueError or TypeError as e:
             raise ValueError("Invalid activity count.") from e
         else:
-            if activity_count < 0:
+            if activity_count <= 0:
                 raise ValueError("Non-positive activity count.")
 
         try:
@@ -39,11 +39,18 @@ def load_event_file(file_name: str) -> Event:
         # Read in all the activities
         try:
             activities = []
-            for activity_line in lines[2:activity_count+2]:
-                name, time, cost, enjoyment = activity_line.split()
 
-                # Create an Activity object for each activity line
-                activities.append(Activity(name, int(time), int(cost), int(enjoyment)))
+            # Check that there are the correct number of activities
+            if len(lines[2:activity_count+2]) == activity_count:
+                for activity_line in lines[2:activity_count+2]:
+                    name, time, cost, enjoyment = activity_line.split()
+
+                    # Create an Activity object for each activity line
+                    activities.append(
+                        Activity(name, int(time), int(cost), int(enjoyment))
+                    )
+            else:
+                raise ValueError
         except ValueError or TypeError as e:
             raise ValueError("Invalid activities.") from e
 

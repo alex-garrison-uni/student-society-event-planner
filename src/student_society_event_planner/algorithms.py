@@ -79,17 +79,16 @@ def bottom_up(event: Event, time_limit: float) -> tuple[list[Activity], int, int
             time_used = i
 
     #backtracking the activities chosen
-    chosen_activites = []
+    chosen_activities = []
     i = activities_count
     t = time_used
 
-    while i > 0 and max_enjoyment > 0:
+    while i > 0 and t > 0:
         #if the value is different from the previous row, we don't take it
         if dp[i][t] != dp[i - 1][t]:
             choose = event.activities[i - 1]
-            chosen_activites.append(choose)
-            max_enjoyment -= activity.enjoyment
-            t -= activity.time
+            chosen_activities.append(choose)
+            t -= choose.time
         i -= 1
 
-    return chosen_activites, dp[activities_count][time_used], time_used
+    return chosen_activities, dp[activities_count][time_used], time_used
